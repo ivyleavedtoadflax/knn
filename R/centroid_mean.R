@@ -1,4 +1,4 @@
-#    vlrr: Vectorised linear regression with regularisation
+#    knn: Simple implementation of k-nearest-neighbours
 #    A package for the R statistical environment
 #    Copyright (C) 2015  Matthew Upson <ivyleavedtoadflax@gmail.com>
 #
@@ -15,43 +15,28 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#' @title Plot k-nearest neighbours
+#' @title Calculate centroid mean
 #'
-#' @description \code{plot_knn} plot k nearest neighbours
+#' @description \code{centroid_mean} calculate centroid mean
+#'
+#' @param \code{X} Matrix of \code{ncol >=2}
 #'
 #' @examples
 #'
-#' plot(X, centroid_means, centroids)
+#' #centroid_mean(X, idx)
 #'
 #' @export
 
+centroid_mean <- function(X, centroids) {
 
+  k = length(unique(centroids))
 
-plot_knn <- function( X, centroid_means, centroids = NULL) {
+  out_matrix <- matrix(nrow = k, ncol = ncol(X))
 
-  # check whether centroids is supplied, if not then just print the data and
-  # centroid_means, if it is supplied, then plot the groups with different colours.
+  for (i in 1:k) {
 
-  if (!is.null(centroids)) {
-
-    plot(rbind(X, centroid_means),type = "n")
-
-    for (i in unique(centroids)) {
-
-      points(X[centroids == i,], col = i)
-
-    }
-
-    k = unique(centroids)
-
-    points(centroid_means, col = 1, lwd = 2, pch = 2)
-
-  } else {
-
-    plot(rbind(X, centroid_means), type = "n")
-    points(X, col = 1)
-    points(centroid_means, col = 2, lwd = 2, pch = 2)
+    out_matrix[i,] <- colMeans(X[i == centroids,])
 
   }
-
+  return(out_matrix)
 }

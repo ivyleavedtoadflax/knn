@@ -1,4 +1,4 @@
-#    vlrr: Vectorised linear regression with regularisation
+#    knn: Simple implementation of k-nearest-neighbours
 #    A package for the R statistical environment
 #    Copyright (C) 2015  Matthew Upson <ivyleavedtoadflax@gmail.com>
 #
@@ -15,43 +15,26 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#' @title Plot k-nearest neighbours
+#' @title rowNorms
 #'
-#' @description \code{plot_knn} plot k nearest neighbours
+#' @description \code{rowNorms} rowNorms
+#'
+#' @param \code{x} A matrix object of \code{nrows >= 1} and \code{ncol >= 2}.
 #'
 #' @examples
 #'
-#' plot(X, centroid_means, centroids)
+#' a <- matrix(1:20,ncol=2)
 #'
-#' @export
+#' rowNorms(a)
+#'
 
 
+rowNorms <- function(x) {
 
-plot_knn <- function( X, centroid_means, centroids = NULL) {
+  norms <- sqrt(rowSums(x ^ 2))
 
-  # check whether centroids is supplied, if not then just print the data and
-  # centroid_means, if it is supplied, then plot the groups with different colours.
-
-  if (!is.null(centroids)) {
-
-    plot(rbind(X, centroid_means),type = "n")
-
-    for (i in unique(centroids)) {
-
-      points(X[centroids == i,], col = i)
-
-    }
-
-    k = unique(centroids)
-
-    points(centroid_means, col = 1, lwd = 2, pch = 2)
-
-  } else {
-
-    plot(rbind(X, centroid_means), type = "n")
-    points(X, col = 1)
-    points(centroid_means, col = 2, lwd = 2, pch = 2)
-
-  }
+  return(norms)
 
 }
+
+

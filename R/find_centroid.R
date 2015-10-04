@@ -17,16 +17,16 @@
 #
 #' @title Calculate nearest centroid
 #'
-#' @description \code{idx} calculate nearest centroid
+#' @description \code{find_centroid} calculate nearest centroid
 #'
 #' @examples
 #'
-#' idx(X)
+#' find_centroid(X)
 #'
 #' @export
 
 
-idx <- function(X, centroids = NULL, k = NULL) {
+find_centroid <- function(X, centroids = NULL, k = NULL) {
 
   # Is centroids supplied? If not select a random sample of training examples,
   # up to length k
@@ -51,9 +51,9 @@ idx <- function(X, centroids = NULL, k = NULL) {
   for (i in 1:k) {
 
     error <- X - centroids[i,]
-    error <- sqrt(rowSums(error ^ 2))
+    error <- rowNorms(error)
 
-    distance_matrix[,i] <- error
+    distance_matrix[,i] <- error ^ 2
 
   }
 

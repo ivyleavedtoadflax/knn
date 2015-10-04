@@ -15,28 +15,29 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#' @title Calculate centroid mean
+#' @title Plot centroids paths
 #'
-#' @description \code{idx_mean} calculate centroid mean
+#' @description \code{plot_knn_path} Plot centroids paths
+#'
+#' @param \code{centroids_all} An input dataframe comprising three variable: \code{x}, \code{y} are coordinates of the locations of centroids, \code{i} is number of the centroid.
 #'
 #' @examples
 #'
-#' idx_mean(X, idx)
+#' plot_knn_path(X, centroids_all)
 #'
 #' @export
 
 
+plot_knn_path <- function(X, centroids_all) {
 
-idx_mean <- function(X, idx) {
+  plot(rbind(X,as.matrix(centroids_all[,-3])), type = "n")
+  points(X)
 
-  k = unique(idx)
+  for (i in unique(centroids_all$i)) {
 
-  out_matrix <- matrix(nrow = k, ncol = X)
-
-  for (i in 1:k) {
-
-    out_matrix[i,] <- colMeans(X[i == idx,])
+    centroid_matches <- centroids_all$i == i
+    num_iter <- length(centroids_all[centroids_all$i == i,])
+    points(centroids_all[centroid_matches,],type = "o", col = i, pch = 16)
 
   }
-  return(out_matrix)
 }
