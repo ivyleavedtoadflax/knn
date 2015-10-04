@@ -1,4 +1,4 @@
-#    vlrr: Vectorised linear regression with regularisation
+#    knn: Simple implementation of k-nearest-neighbours
 #    A package for the R statistical environment
 #    Copyright (C) 2015  Matthew Upson <ivyleavedtoadflax@gmail.com>
 #
@@ -17,28 +17,38 @@
 #
 #' @title Calculate nearest centroid
 #'
-#' @description \code{idx} calculate nearest centroid
+#' @description \code{find_centroid} calculate nearest centroid
+#'
+#' @param X Matrix of \code{ncol >=2}.
+#' @param centroids Vector of initial centroid locations. Defaults to \code{NULL}.
+#' @param k Number of randomly initiliased centroids to create. Deafults to 3, and is required in \code{centroids = NULL}.
 #'
 #' @examples
 #'
-#' idx(X)
+#' X <- mtcars[, c("disp", "mpg")]
+#' idx <- find_centroid(X, k = 2)
 #'
 #' @export
 
 
-idx <- function(X, centroids = NULL, k = NULL) {
+find_centroid <- function(X, centroids = NULL, k = 3) {
+  X <- as.matrix(X)
+  stopifnot(is.matrix(X))
 
   # Is centroids supplied? If not select a random sample of training examples,
   # up to length k
 
   if (is.null(centroids)) {
+    if (is.numeric(k)) {
+      centroids = X[sample(nrow(X),k),]
 
+    } else {
+      stop("If centroids are not specified, then k must be numeric.")
 
-    centroids = X[sample(nrow(X),k),]
+    }
 
   } else {
-
-    # If centroids are supplied, then k = number of centrodis supplied
+    # If centroids are supplied, then k = number of centroids supplied
 
     k = nrow(centroids)
 
@@ -49,11 +59,9 @@ idx <- function(X, centroids = NULL, k = NULL) {
   # Loop through centroids calculating the norm
 
   for (i in 1:k) {
-
     error <- X - centroids[i,]
-    error <- sqrt(rowSums(error ^ 2))
-
-    distance_matrix[,i] <- error
+    error <- rowNorms(error)
+    distance_matrix[,i] <- error ^ 2
 
   }
 

@@ -4,12 +4,19 @@
 \alias{plot_knn}
 \title{Plot k-nearest neighbours}
 \usage{
-plot_knn(X, centroids, idx = NULL)
+plot_knn(X, centroid_means, centroids = NULL)
+}
+\arguments{
+\item{X}{\code{X} Matrix of \code{ncol >=2}.}
+
+\item{centroid_means}{\code{centroid_means} Centroid means.}
+
+\item{centroids}{\code{centroids} Vector of initial centroid locations. Defaults to \code{NULL}.}
 }
 \description{
 \code{plot_knn} plot k nearest neighbours
 }
 \examples{
-plot(X, centroids, idx)
+#plot(X, centroid_means, centroids)
 }
 

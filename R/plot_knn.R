@@ -1,4 +1,4 @@
-#    vlrr: Vectorised linear regression with regularisation
+#    knn: Simple implementation of k-nearest-neighbours
 #    A package for the R statistical environment
 #    Copyright (C) 2015  Matthew Upson <ivyleavedtoadflax@gmail.com>
 #
@@ -19,38 +19,40 @@
 #'
 #' @description \code{plot_knn} plot k nearest neighbours
 #'
+#' @param X \code{X} Matrix of \code{ncol >=2}.
+#' @param centroid_means \code{centroid_means} Centroid means.
+#' @param centroids \code{centroids} Vector of initial centroid locations. Defaults to \code{NULL}.
+#'
 #' @examples
 #'
-#' plot(X, centroids, idx)
+#' #plot(X, centroid_means, centroids)
 #'
 #' @export
 
+plot_knn <- function(X, centroid_means, centroids = NULL) {
+  X <- as.matrix(X)
+  colnames(X) <- NULL
 
+  # check whether centroids is supplied, if not then just print the data and
+  # centroid_means, if it is supplied, then plot the groups with different
+  # colours.
 
-plot_knn <- function( X, centroids, idx = NULL) {
+  if (!is.null(centroids)) {
+    plot(rbind(X, centroid_means), type = "n")
 
-  # check whether idx is supplied, if not then just print the data and
-  # centroids, if it is supplied, then plot the groups with different colours.
-
-  if (!is.null(idx)) {
-
-    plot(rbind(X, centroids),type = "n")
-
-    for (i in unique(idx)) {
-
-      points(X[idx == i,], col = i)
+    for (i in unique(centroids)) {
+      points(X[centroids == i,], col = i)
 
     }
 
-    k = unique(idx)
+    k = unique(centroids)
 
-    points(centroids, col = 1, lwd = 2, pch = paste(1:k))
+    points(centroid_means, col = 1, lwd = 2, pch = 2)
 
   } else {
-
-    plot(rbind(X, centroids), type = "n")
+    plot(rbind(X, centroid_means), type = "n")
     points(X, col = 1)
-    points(centroids, col = 2, lwd = 2, pch = 2)
+    points(centroid_means, col = 2, lwd = 2, pch = 2)
 
   }
 

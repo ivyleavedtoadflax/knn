@@ -1,4 +1,4 @@
-#    vlrr: Vectorised linear regression with regularisation
+#    knn: Simple implementation of k-nearest-neighbours
 #    A package for the R statistical environment
 #    Copyright (C) 2015  Matthew Upson <ivyleavedtoadflax@gmail.com>
 #
@@ -17,25 +17,24 @@
 #
 #' @title Calculate centroid mean
 #'
-#' @description \code{idx_mean} calculate centroid mean
+#' @description \code{centroid_mean} calculate centroid mean
+#'
+#' @param X \code{X} Matrix of \code{ncol >=2}.
+#' @param group \code{group} Vector of groups for which centroid means will be calculated.
 #'
 #' @examples
 #'
-#' idx_mean(X, idx)
+#' #centroid_mean(X, idx)
 #'
 #' @export
 
+centroid_mean <- function(X, group) {
+  k = length(unique(group))
 
-
-idx_mean <- function(X, idx) {
-
-  k = unique(idx)
-
-  out_matrix <- matrix(nrow = k, ncol = X)
+  out_matrix <- matrix(nrow = k, ncol = ncol(X))
 
   for (i in 1:k) {
-
-    out_matrix[i,] <- colMeans(X[i == idx,])
+    out_matrix[i,] <- colMeans(X[i == group,])
 
   }
   return(out_matrix)
