@@ -7,14 +7,14 @@
 rowNorms(x)
 }
 \arguments{
-\item{\code{x}}{A matrix object of \code{nrows >= 1} and \code{ncol >= 2}.}
+\item{x}{\code{x} A matrix object of \code{nrows >= 1} and \code{ncol >= 2}.}
 }
 \description{
 \code{rowNorms} rowNorms
 }
 \examples{
-a <- matrix(1:20,ncol=2)
+#a <- matrix(1:20,ncol=2)
 
-rowNorms(a)
+#rowNorms(a)
 }
 

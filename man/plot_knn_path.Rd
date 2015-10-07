@@ -7,12 +7,14 @@
 plot_knn_path(X, centroids_all)
 }
 \arguments{
-\item{\code{centroids_all}}{An input dataframe comprising three variable: \code{x}, \code{y} are coordinates of the locations of centroids, \code{i} is number of the centroid.}
+\item{X}{\code{X} Matrix of \code{ncol >=2}.}
+
+\item{centroids_all}{\code{centroids_all} An input dataframe comprising three variable: \code{x}, \code{y} are coordinates of the locations of centroids, \code{i} is number of the centroid.}
 }
 \description{
 \code{plot_knn_path} Plot centroids paths
 }
 \examples{
-plot_knn_path(X, centroids_all)
+#plot_knn_path(X, centroids_all)
 }
 

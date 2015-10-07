@@ -19,7 +19,8 @@
 #'
 #' @description \code{centroid_mean} calculate centroid mean
 #'
-#' @param \code{X} Matrix of \code{ncol >=2}
+#' @param X \code{X} Matrix of \code{ncol >=2}.
+#' @param group \code{group} Vector of groups for which centroid means will be calculated.
 #'
 #' @examples
 #'
@@ -27,15 +28,15 @@
 #'
 #' @export
 
-centroid_mean <- function(X, centroids) {
+centroid_mean <- function(X, group) {
 
-  k = length(unique(centroids))
+  k = length(unique(group))
 
   out_matrix <- matrix(nrow = k, ncol = ncol(X))
 
   for (i in 1:k) {
 
-    out_matrix[i,] <- colMeans(X[i == centroids,])
+    out_matrix[i,] <- colMeans(X[i == group,])
 
   }
   return(out_matrix)

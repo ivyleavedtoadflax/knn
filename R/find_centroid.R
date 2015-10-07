@@ -1,4 +1,4 @@
-#    vlrr: Vectorised linear regression with regularisation
+#    knn: Simple implementation of k-nearest-neighbours
 #    A package for the R statistical environment
 #    Copyright (C) 2015  Matthew Upson <ivyleavedtoadflax@gmail.com>
 #
@@ -19,9 +19,13 @@
 #'
 #' @description \code{find_centroid} calculate nearest centroid
 #'
+#' @param X \code{X} Matrix of \code{ncol >=2}.
+#' @param centroids \code{centroids} Vector of initial centroid locations. Defaults to \code{NULL}.
+#' @param k \code{k} Number of randomly initiliased centroids to create. Deafults to \code{NULL}, but is required in \code{centroids = NULL}.
+#'
 #' @examples
 #'
-#' find_centroid(X)
+#' #find_centroid(X)
 #'
 #' @export
 
@@ -32,7 +36,6 @@ find_centroid <- function(X, centroids = NULL, k = NULL) {
   # up to length k
 
   if (is.null(centroids)) {
-
 
     centroids = X[sample(nrow(X),k),]
 

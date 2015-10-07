@@ -6,10 +6,17 @@
 \usage{
 find_centroid(X, centroids = NULL, k = NULL)
 }
+\arguments{
+\item{X}{\code{X} Matrix of \code{ncol >=2}.}
+
+\item{centroids}{\code{centroids} Vector of initial centroid locations. Defaults to \code{NULL}.}
+
+\item{k}{\code{k} Number of randomly initiliased centroids to create. Deafults to \code{NULL}, but is required in \code{centroids = NULL}.}
+}
 \description{
 \code{find_centroid} calculate nearest centroid
 }
 \examples{
-find_centroid(X)
+#find_centroid(X)
 }
 

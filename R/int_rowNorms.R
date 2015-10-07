@@ -19,13 +19,13 @@
 #'
 #' @description \code{rowNorms} rowNorms
 #'
-#' @param \code{x} A matrix object of \code{nrows >= 1} and \code{ncol >= 2}.
+#' @param x \code{x} A matrix object of \code{nrows >= 1} and \code{ncol >= 2}.
 #'
 #' @examples
 #'
-#' a <- matrix(1:20,ncol=2)
+#' #a <- matrix(1:20,ncol=2)
 #'
-#' rowNorms(a)
+#' #rowNorms(a)
 #'
 
 

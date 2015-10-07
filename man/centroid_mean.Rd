@@ -4,10 +4,12 @@
 \alias{centroid_mean}
 \title{Calculate centroid mean}
 \usage{
-centroid_mean(X, centroids)
+centroid_mean(X, group)
 }
 \arguments{
-\item{\code{X}}{Matrix of \code{ncol >=2}}
+\item{X}{\code{X} Matrix of \code{ncol >=2}.}
+
+\item{group}{\code{group} Vector of groups for which centroid means will be calculated.}
 }
 \description{
 \code{centroid_mean} calculate centroid mean

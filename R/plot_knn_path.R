@@ -1,4 +1,4 @@
-#    vlrr: Vectorised linear regression with regularisation
+#    knn: Simple implementation of k-nearest-neighbours
 #    A package for the R statistical environment
 #    Copyright (C) 2015  Matthew Upson <ivyleavedtoadflax@gmail.com>
 #
@@ -19,11 +19,12 @@
 #'
 #' @description \code{plot_knn_path} Plot centroids paths
 #'
-#' @param \code{centroids_all} An input dataframe comprising three variable: \code{x}, \code{y} are coordinates of the locations of centroids, \code{i} is number of the centroid.
+#' @param X \code{X} Matrix of \code{ncol >=2}.
+#' @param centroids_all \code{centroids_all} An input dataframe comprising three variable: \code{x}, \code{y} are coordinates of the locations of centroids, \code{i} is number of the centroid.
 #'
 #' @examples
 #'
-#' plot_knn_path(X, centroids_all)
+#' #plot_knn_path(X, centroids_all)
 #'
 #' @export
 
