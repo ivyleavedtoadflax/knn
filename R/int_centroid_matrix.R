@@ -15,27 +15,35 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#' @title Calculate centroid mean
+#' @title centroid_matrix
 #'
-#' @description \code{centroid_mean} calculate centroid mean
+#' @description \code{centroid_matrix} rowNorms
 #'
-#' @param X \code{X} Matrix of \code{ncol >=2}.
-#' @param group \code{group} Vector of groups for which centroid means will be calculated.
+#' @param x \code{x} A vector of integer or double with elements \code{n >= 1}.
+#' @param m \code{m} An integer declaring the number of unlabelled training examples.
 #'
 #' @examples
 #'
-#' # centroid_mean(X, idx)
+#' # X is a matrix of unlabelled training examples
 #'
-#' @export
+#' # X <- matrix(rep( 0, 10), ncol = 2)
+#'
+#' # y is a vector of initial centroids
+#'
+#' centroids <- c(1,10)
+#'
+#' # X - centroid_matrix(x = centroids, m = nrow(X))
+#'
+#'
 
-centroid_mean <- function(X, group) {
-  k = length(unique(group))
+centroid_matrix <- function(x, m) {
 
-  out_matrix <- matrix(nrow = k, ncol = ncol(X))
+  y <- matrix(
+    rep(x, m),
+    ncol = length(x),
+    byrow = TRUE
+  )
 
-  for (i in 1:k) {
-    out_matrix[i,] <- colMeans(X[i == group,])
+  return(y)
 
-  }
-  return(out_matrix)
 }

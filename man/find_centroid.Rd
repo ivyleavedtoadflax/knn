@@ -18,6 +18,6 @@ find_centroid(X, centroids = NULL, k = 3)
 }
 \examples{
 X <- mtcars[, c("disp", "mpg")]
- #find_centroid(X)
+idx <- find_centroid(X, k = 2)
 }
 

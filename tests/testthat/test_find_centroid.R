@@ -21,7 +21,7 @@ test_that("find_centroid and centroid_mean are working as expected.",
 
             idx <- find_centroid(a, centroids)
 
-            plot_knn(a, centroids, idx)
+            #plot_knn(a, centroids, idx)
 
             # Check that the find_centroid() makes decent clusters.
 
@@ -48,7 +48,8 @@ test_that("find_centroid and centroid_mean are working as expected on real data"
           {
             # Create some test data based on three centroids.
 
-              a <- readRDS("tests/testthat/real_data.Rds")
+            a <- readRDS("real_data.Rds")
+            #a <- readRDS("real_data.Rds")
 
             # Set centroids.
 
@@ -57,35 +58,32 @@ test_that("find_centroid and centroid_mean are working as expected on real data"
                                 byrow = TRUE)
 
             idx <- find_centroid(a)#, centroids)
-            print(idx)
 
-            plot_knn(a, centroids, idx)
-
-            centroids <- centroid_mean(a,idx)
-            idx <- find_centroid(a,centroids)
-
-            plot_knn(a, centroids, idx)
+            #plot_knn(a, centroids, idx)
 
             centroids <- centroid_mean(a,idx)
             idx <- find_centroid(a,centroids)
 
-            plot_knn(a, centroids, idx)
+            #plot_knn(a, centroids, idx)
 
             centroids <- centroid_mean(a,idx)
             idx <- find_centroid(a,centroids)
 
-            plot_knn(a, centroids, idx)
+            #plot_knn(a, centroids, idx)
 
             centroids <- centroid_mean(a,idx)
             idx <- find_centroid(a,centroids)
 
-            plot_knn(a, centroids, idx)
+            #plot_knn(a, centroids, idx)
+
+            centroids <- centroid_mean(a,idx)
+            idx <- find_centroid(a,centroids)
+
+            ##plot_knn(a, centroids, idx)
             # More general tests.
 
             expect_equal(length(idx), nrow(a))
             expect_is(idx, "integer")
-
-            find_centroid(a, )
 
             # Now test centroid_mean against clusters to see whether it finds the same
             # clusters as the original. Use a tolerance of one to allow for rounding

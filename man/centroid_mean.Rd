@@ -15,6 +15,6 @@ centroid_mean(X, group)
 \code{centroid_mean} calculate centroid mean
 }
 \examples{
-#centroid_mean(X, idx)
+# centroid_mean(X, idx)
 }
 

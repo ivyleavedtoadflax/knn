@@ -17,6 +17,6 @@ plot_knn(X, centroid_means, centroids = NULL)
 \code{plot_knn} plot k nearest neighbours
 }
 \examples{
-#plot(X, centroid_means, centroids)
+# plot(X, centroid_means, centroids)
 }
 

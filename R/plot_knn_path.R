@@ -24,7 +24,7 @@
 #'
 #' @examples
 #'
-#' #plot_knn_path(X, centroids_all)
+#' #plot_knn_path( X, centroids_all)
 #'
 #' @export
 

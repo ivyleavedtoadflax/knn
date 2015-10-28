@@ -59,7 +59,16 @@ find_centroid <- function(X, centroids = NULL, k = 3) {
   # Loop through centroids calculating the norm
 
   for (i in 1:k) {
-    error <- X - centroids[i,]
+
+#     centroid_matrix <- matrix(
+#       rep(centroids[i,], nrow(X)),
+#       ncol = ncol(centroids),
+#       byrow = TRUE
+#       )
+
+    centroids_m <- centroid_matrix(centroids[i,], nrow(X))
+
+    error <- X - centroids_m
     error <- rowNorms(error)
     distance_matrix[,i] <- error ^ 2
 

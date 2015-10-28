@@ -15,6 +15,6 @@ plot_knn_path(X, centroids_all)
 \code{plot_knn_path} Plot centroids paths
 }
 \examples{
-#plot_knn_path(X, centroids_all)
+#plot_knn_path( X, centroids_all)
 }
 

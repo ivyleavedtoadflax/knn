@@ -25,7 +25,7 @@
 #'
 #' @examples
 #'
-#' #plot(X, centroid_means, centroids)
+#' # plot(X, centroid_means, centroids)
 #'
 #' @export
 

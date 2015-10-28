@@ -13,7 +13,7 @@ rowNorms(x)
 \code{rowNorms} rowNorms
 }
 \examples{
-#a <- matrix(1:20,ncol=2)
+# a <- matrix(1:20, ncol = 2)
 
 #rowNorms(a)
 }
