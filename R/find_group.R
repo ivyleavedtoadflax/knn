@@ -15,9 +15,9 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#' @title Calculate nearest centroid
+#' @title Calculate group
 #'
-#' @description \code{find_centroid} calculate nearest centroid
+#' @description \code{find_group} calculate nearest centroid
 #'
 #' @param X Matrix of \code{ncol >=2}.
 #' @param centroids Vector of initial centroid locations. Defaults to \code{NULL}.
@@ -26,12 +26,12 @@
 #' @examples
 #'
 #' X <- mtcars[, c("disp", "mpg")]
-#' idx <- find_centroid(X, k = 2)
+#' idx <- find_group(X, k = 2)
 #'
 #' @export
 
 
-find_centroid <- function(X, centroids = NULL, k = 3) {
+find_group <- function(X, centroids = NULL, k = 3) {
   X <- as.matrix(X)
   stopifnot(is.matrix(X))
 

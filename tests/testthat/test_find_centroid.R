@@ -1,6 +1,6 @@
 
 
-test_that("find_centroid and centroid_mean are working as expected.",
+test_that("find_group and centroid_mean are working as expected.",
           {
             # Create some test data based on three centroids.
 
@@ -19,11 +19,11 @@ test_that("find_centroid and centroid_mean are working as expected.",
                                 ncol = 2,
                                 byrow = TRUE)
 
-            idx <- find_centroid(a, centroids)
+            idx <- find_group(a, centroids)
 
             #plot_knn(a, centroids, idx)
 
-            # Check that the find_centroid() makes decent clusters.
+            # Check that the find_group() makes decent clusters.
 
             expect_equal(idx[1:30], rep(1, 30))
             expect_equal(idx[31:60], rep(2, 30))
@@ -44,7 +44,7 @@ test_that("find_centroid and centroid_mean are working as expected.",
 
 
 
-test_that("find_centroid and centroid_mean are working as expected on real data",
+test_that("find_group and centroid_mean are working as expected on real data",
           {
             # Create some test data based on three centroids.
 
@@ -57,27 +57,27 @@ test_that("find_centroid and centroid_mean are working as expected on real data"
                                 ncol = 2,
                                 byrow = TRUE)
 
-            idx <- find_centroid(a)#, centroids)
+            idx <- find_group(a)#, centroids)
 
             #plot_knn(a, centroids, idx)
 
             centroids <- centroid_mean(a,idx)
-            idx <- find_centroid(a,centroids)
+            idx <- find_group(a,centroids)
 
             #plot_knn(a, centroids, idx)
 
             centroids <- centroid_mean(a,idx)
-            idx <- find_centroid(a,centroids)
+            idx <- find_group(a,centroids)
 
             #plot_knn(a, centroids, idx)
 
             centroids <- centroid_mean(a,idx)
-            idx <- find_centroid(a,centroids)
+            idx <- find_group(a,centroids)
 
             #plot_knn(a, centroids, idx)
 
             centroids <- centroid_mean(a,idx)
-            idx <- find_centroid(a,centroids)
+            idx <- find_group(a,centroids)
 
             ##plot_knn(a, centroids, idx)
             # More general tests.
@@ -94,11 +94,11 @@ test_that("find_centroid and centroid_mean are working as expected on real data"
           })
 
 
-test_that("Test situation if centroids are not specified in find_centroid call.",
+test_that("Test situation if centroids are not specified in find_group call.",
           {
             X <- mtcars[, c("disp", "mpg")]
 
-            idx <- find_centroid(X)
+            idx <- find_group(X)
 
             # k defaults to 3
 
@@ -107,7 +107,7 @@ test_that("Test situation if centroids are not specified in find_centroid call."
 
             # Sepecify k manually
 
-            idx1 <- find_centroid(X, k = 2)
+            idx1 <- find_group(X, k = 2)
             expect_is(idx1, "integer")
             expect_equal(length(idx1), nrow(X))
 
