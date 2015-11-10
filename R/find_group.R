@@ -31,7 +31,7 @@
 #' @export
 
 
-find_group <- function(X, centroids = NULL, k = 3) {
+find_group <- function(X, centroids = NULL, k = NULL, ...) {
   X <- as.matrix(X)
   stopifnot(is.matrix(X))
 

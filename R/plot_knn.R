@@ -38,7 +38,12 @@ plot_knn <- function(X, centroid_means, centroids = NULL) {
   # colours.
 
   if (!is.null(centroids)) {
-    plot(rbind(X, centroid_means), type = "n")
+    plot(
+      rbind(X, centroid_means),
+      type = "n",
+      xlab = expression(x[1]),
+      ylab = expression(x[2])
+    )
 
     for (i in unique(centroids)) {
       points(X[centroids == i,], col = i)
@@ -50,7 +55,12 @@ plot_knn <- function(X, centroid_means, centroids = NULL) {
     points(centroid_means, col = 1, lwd = 2, pch = 2)
 
   } else {
-    plot(rbind(X, centroid_means), type = "n")
+    plot(
+      rbind(X, centroid_means),
+      type = "n",
+      xlab = expression(x[1]),
+      ylab = expression(x[2])
+    )
     points(X, col = 1)
     points(centroid_means, col = 2, lwd = 2, pch = 2)
 

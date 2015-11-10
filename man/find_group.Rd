@@ -2,7 +2,7 @@
 % Please edit documentation in R/find_group.R
 \name{find_group}
 \alias{find_group}
-\title{Calculate nearest centroid}
+\title{Calculate group}
 \usage{
 find_group(X, centroids = NULL, k = 3)
 }

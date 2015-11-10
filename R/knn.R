@@ -24,18 +24,21 @@
 #'
 #' @examples
 #'
-#' # centroid_mean(X, idx)
+#' # knn(X)
 #'
 #' @export
+#'
+#'
 
-knn <- function(X, centroids = NULL, k = NULL, imax = NULL, ...) {
+
+knn <- function(X, centroids = NULL, k = 3, imax = NULL, ...) {
 
   ## Run one iteration as standard
 
-  idx <- find_group(X)
+  idx <- find_group(X, k = k)
   centroids <- centroid_mean(X, idx)
 
-  idx2 <- find_group(X, centroids)
+  idx2 <- find_group(X, centroids, k = k)
   centroids2 <- centroid_mean(X, idx2)
 
   i <- 1
@@ -59,13 +62,13 @@ knn <- function(X, centroids = NULL, k = NULL, imax = NULL, ...) {
     ## iterations has been reached
 
     if (!is.null(imax)) {
-     if(i == imax) break
-     }
+      if(i == imax) break
+    }
 
-    idx <- find_group(X, centroids2)
+    idx <- find_group(X, centroids2, k = k)
     centroids <- centroid_mean(X, idx)
 
-    idx2 <- find_group(X, centroids)
+    idx2 <- find_group(X, centroids, k = k)
     centroids2 <- centroid_mean(X, idx2)
 
     ## Add to accumulator
@@ -75,21 +78,21 @@ knn <- function(X, centroids = NULL, k = NULL, imax = NULL, ...) {
     ## Output results for plot function
 
     out_mat <- rbind(
-      out_mat
-    )
-    cbind(
-      centroids2,
-      i
+      out_mat,
+      cbind(
+        centroids2,
+        i
+      )
     )
 
-    }
+  }
 
   out <- list(
     groups = idx2,
     centroids = centroids2,
     steps = i,
     centroid_path = out_mat
-    )
+  )
 
   return(out)
 

@@ -2,5 +2,6 @@
 
 export(centroid_mean)
 export(find_group)
+export(knn)
 export(plot_knn)
 export(plot_knn_path)

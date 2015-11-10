@@ -1,7 +1,7 @@
 Package: knn
 Type: Package
 Title: Simple implementation of k nearest neighbours
-Version: 0.1.2
+Version: 0.1.3
 Date: 2015-08-13
 Author: Matthew Upson
 Maintainer: Matthew Upson <ivyleavedtoadflax@gmail.com>
